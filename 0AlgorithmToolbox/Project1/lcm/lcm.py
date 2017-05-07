@@ -8,8 +8,26 @@ def lcm_naive(a, b):
 
     return a*b
 
-if __name__ == '__main__':
-    input = sys.stdin.read()
-    a, b = map(int, input.split())
-    print(lcm_naive(a, b))
+def gcd_euclid(a, b):
+    small = min(a,b)
+    big = max(a,b)
+    current_gcd = small
+    mod = big%small
+    while mod!=0:        
+        new_gcd = mod
+        mod = current_gcd%mod
+        current_gcd = new_gcd
+    return current_gcd
+
+def lcm_rt(a, b):
+    gcd = gcd_euclid(a,b)
+    a1 = int(a/gcd)
+    b1 = int(b/gcd)
+    lcm = gcd*a1*b1
+    return lcm
+
+
+input = input()
+a, b = map(int, input.split())
+print(lcm_rt(a, b))
 

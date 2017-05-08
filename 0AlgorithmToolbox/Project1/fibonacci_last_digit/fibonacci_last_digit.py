@@ -10,7 +10,7 @@ def get_fibonacci_last_digit_naive(n):
     i=0
 
     while i<(n-1):
-        #Here is the simple fix to make the program, 
+        #Here is the simple fix to make the program, much faster
         previous, current = current, (previous + current)%10
         i+=1
     return current % 10

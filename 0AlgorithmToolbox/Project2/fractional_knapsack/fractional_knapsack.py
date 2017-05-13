@@ -13,7 +13,18 @@ def get_optimal_value(capacity, weights, values):
     i=0
     curmaxval = fractionalValues[i]
     index = unsorted.index(curmaxval)
-    while currentWeight<capacity and i<len(weights):
+
+    while i<len(unsorted):
+        if capacity == 0:
+            return value
+        index = unsorted.index(fractionalValues[i])
+        a = min(weights[index], capacity)
+        value = value + (a*fractionalValues[i])
+        weights[index] = weights[index] - a
+        capacity = capacity-a
+        i += 1
+    return value
+    '''while currentWeight<capacity and i<len(weights):
         if weights[index] ==0:
             i += 1
             curmaxval = fractionalValues[i]
@@ -30,7 +41,9 @@ def get_optimal_value(capacity, weights, values):
             currentWeight+=weights[index]
             weights[index]-=weights[index]
             i+=1        
-    return value
+    return value'''
+
+    
 
 
 if __name__ == "__main__":
